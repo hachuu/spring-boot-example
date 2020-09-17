@@ -1,21 +1,30 @@
+``` html
+<pre>
+라라라
+</pre>
+```
+
 # spring-boot-example
-spring boot 예제
+## spring boot
 
 ------------------------------------------------------------
-java SE 15 - jdk-15 windows-x64
-eclipse
-spring boot
-Gradle
-
-  Spring Starter Project
-  type: Gradle
-  Packaging: Jar
-  Language: Java
-  Java Version: 11
+- java SE 15 - jdk-15 windows-x64
+- eclipse
+- spring boot
+- Gradle
 ------------------------------------------------------------
-
-springboot
+  *Spring Starter Project*
+ - type: Gradle
+ - Packaging: Jar
+ - Language: Java
+ - Java Version: 11
+------------------------------------------------------------
+  *eclipse market*
+  ```
+1. springboot
 - Spring Tools 4 (aka Spring Tool Suite 4) 4.8.0.RELEASE
-gradle
+------------------------------------------------------------
+2. gradle
 - Buildship Gradle Integration 3.0
 - Minimalist Gradle Editor 1.0.1
+```
