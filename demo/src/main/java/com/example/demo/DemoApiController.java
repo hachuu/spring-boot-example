@@ -8,6 +8,9 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,7 +46,7 @@ public class DemoApiController {
 	
 	@CrossOrigin(origins = "http://localhost:6200")
 	@GetMapping("/getRestDeInfo")
-	public String callRestDeInfo() {
+	public String callRestDeInfo(HttpServletRequest request) {
 
 //		HashMap<String, Object> result = new HashMap<String, Object>();
 
@@ -75,12 +78,13 @@ public class DemoApiController {
 //			// 데이터를 제대로 전달 받았는지 확인 string형태로 파싱해줌
 //			ObjectMapper mapper = new ObjectMapper();
 //			jsonInString = mapper.writeValueAsString(resultMap.getBody());
-			
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
 			
 			String urlStr = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo?" +
 			"ServiceKey=znWF0YRgwv7pzqf%2Bo6ggglOcOQgogMD2pxqsDpXmH9bg4imY01PgCvKWnrgFlvLCbMX4VOj%2F%2Fgeu8wDqBHFbpw%3D%3D" +
-			"&solYear=2020" +
-			"&solMonth=10" +
+			"&solYear=" + year +
+			"&solMonth=" + month +
 			"&_type=json";
 			
 			URL url = new URL(urlStr);
