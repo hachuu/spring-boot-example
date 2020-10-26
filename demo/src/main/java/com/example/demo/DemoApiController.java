@@ -121,5 +121,4 @@ public class DemoApiController {
 	public String doLogin(HttpServletRequest request) {
 		return "로그인 성공";
 	}
-	}
 }
