@@ -115,4 +115,11 @@ public class DemoApiController {
 
 		return result+"";
 	}
+	
+	@CrossOrigin(origins = "http://localhost:6200")
+	@GetMapping("/doLogin")
+	public String doLogin(HttpServletRequest request) {
+		return "로그인 성공";
+	}
+	}
 }
