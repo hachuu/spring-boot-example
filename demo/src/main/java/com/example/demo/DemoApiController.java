@@ -8,12 +8,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.security.SecureRandom;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +36,10 @@ import org.springframework.web.client.HttpServerErrorException;
 
 @RestController
 public class DemoApiController {
+	
+	private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
+	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); //threadsafe
+	
 	@GetMapping("/demoapistring")
 	public String demoapistring() {
 		return "데모 스트링 타입 리턴";
@@ -119,6 +128,32 @@ public class DemoApiController {
 	@CrossOrigin(origins = "http://localhost:6200")
 	@GetMapping("/doLogin")
 	public String doLogin(HttpServletRequest request) {
-		return "로그인 성공";
+		
+		//로그인 토큰을 return시킴;
+		String token = generateNewToken();
+		return token;
 	}
+	
+	public static String generateNewToken() {
+		
+	    byte[] randomBytes = new byte[24];
+	    secureRandom.nextBytes(randomBytes);
+	    return base64Encoder.encodeToString(randomBytes);
+	}
+	
+//	public String generateToken() {
+//	    String token = null;
+//	    SecureRandom secureRandom;
+//	    try {
+//	        secureRandom = SecureRandom.getInstance("SHA1PRNG");
+//	        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+//	        secureRandom.setSeed(secureRandom.generateSeed(128));
+//	        token= new String(digest.digest((secureRandom.nextLong() + "").getBytes()));
+//	    } catch (NoSuchAlgorithmException e) {
+//	        // TODO Auto-generated catch block
+//	        e.printStackTrace();
+//	    }
+//	    return token;
+//	}
+	
 }
