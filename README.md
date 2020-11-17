@@ -1,5 +1,5 @@
 ``` html
-<h1>README.md</h1>
+README.md
 ```
 
 # spring-boot-example
