@@ -32,3 +32,7 @@ README.md
 
 1. C:\Users\shysh\git\spring-boot-example3 경로에서 git pull 하기
 2. 변경된 소스는 eclipse Workspace 'C:\java\new' open 후 수동 merge를 하고 server start (이유는 path 및, 설정 파일이 변경되어서 프로그램이 망가짐)
+
+------------------------------------------------------------
+조만간 nodejs로 서버구축을 다시 해야겠다.
+eclipse로 git 연동하기가 어지간하지 않네..
